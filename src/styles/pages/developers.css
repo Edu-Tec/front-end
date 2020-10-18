@@ -1,0 +1,90 @@
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.containerDev {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/home-background.jpg");
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "back title go"
+    "conteudo conteudo conteudo"
+    "conteudo conteudo conteudo";
+  overflow: hidden;
+}
+
+.containerDev #goHome {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 15px;
+  cursor: pointer;
+  transition: 0.1s ease;
+  grid-area: back;
+}
+
+.containerDev #goHome:hover {
+  transform: scale(1.1);
+  background: #483d8b;
+}
+
+.containerDev #goAhead {
+  grid-area: go;
+}
+
+.containerDev .title {
+  grid-area: title;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.containerDev .content {
+  grid-area: conteudo;
+  display: flex;
+  flex-direction: column;
+}
+
+.containerDev .content .dev {
+  width: 65%;
+  height: 40%;
+  background-color: rgba(0, 0, 0, 0.45);
+  color: white;
+  margin: 0 0 1.25vw 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  gap: 3.5%;
+  border-radius: 10px;
+}
+
+.containerDev .content .dev:nth-child(2) {
+  align-self: flex-end;
+  margin: 1.25vw 6.1vw 0 0;
+}
+
+.containerDev .content .dev:nth-child(4) {
+  align-self: flex-end;
+  margin: 1.25vw 6.1vw 0 0;
+}
+
+.containerDev .content .dev img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
