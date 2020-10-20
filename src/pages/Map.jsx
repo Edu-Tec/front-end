@@ -37,6 +37,7 @@ function MapApp() {
             : [1, 1]
         }
         zoom={15}
+        minZoom={5}
         style={{
           width: '100%',
           height: '100%',
