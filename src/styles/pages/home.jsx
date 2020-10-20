@@ -28,4 +28,29 @@ export const Container = styled.div`
       padding: 0 3px;
     }
   }
+  #start {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px;
+    cursor: pointer;
+    gap: 25px;
+    transition: 0.5s ease;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  #start svg {
+    transition: 0.5s ease;
+  }
+  #start h5 {
+    font-weight: normal;
+  }
+  #start:hover {
+    color: gray;
+
+    svg {
+      stroke: gray;
+    }
+  }
 `;

@@ -10,6 +10,7 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    transition: 0.5s ease;
     background-color: #00000030;
     div {
       width: 20%;
@@ -22,5 +23,11 @@ export const Container = styled.div`
         color: white;
       }
     }
+  }
+
+  nav:hover {
+    background-color: ${(props) => {
+      return props.dark ? 'rgba(255,255,255,.25)' : '#00000098';
+    }};
   }
 `;
