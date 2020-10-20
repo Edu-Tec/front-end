@@ -26,6 +26,8 @@ export const Container = styled.div`
   }
 
   nav:hover {
-    background-color: #00000097;
+    background-color: ${(props) => {
+      return props.dark ? 'rgba(255,255,255,.25)' : '#00000098';
+    }};
   }
 `;

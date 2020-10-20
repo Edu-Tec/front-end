@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 import { Container } from '../styles/navBar';
 
-function NavBar() {
+function NavBar({ style, dark }) {
   return (
-    <Container>
+    <Container dark={dark} style={style}>
       <nav>
         <h2>Luvilla</h2>
         <div>

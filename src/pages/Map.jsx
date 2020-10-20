@@ -6,6 +6,7 @@ import planetIcon from '../assets/icons/planetIcon.svg';
 import tileLayerImage from '../assets/images/TileLayer.jpg';
 
 import { Container } from '../styles/pages/map';
+import NavBar from '../components/pages/NavBar';
 
 import api from '../services/api';
 
@@ -29,6 +30,16 @@ function MapApp() {
 
   return (
     <Container>
+      <NavBar
+        dark
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          zIndex: 999,
+          backgroundColor: '#00000030',
+        }}
+      />
       <Map
         zoomControl={false}
         center={
