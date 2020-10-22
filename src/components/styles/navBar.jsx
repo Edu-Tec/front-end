@@ -2,6 +2,17 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
+  position: ${({ fixed }) => {
+    if (fixed) {
+      return 'fixed';
+    }
+
+    return 'initial';
+  }};
+  top: 0;
+  left: 0;
+  color: white;
+  z-index: 999;
   nav {
     width: 100%;
     height: 50px;

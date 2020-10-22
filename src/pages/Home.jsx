@@ -10,7 +10,7 @@ function Home() {
     <Container>
       <NavBar />
       <main>
-        <h1>Edutec - Cosmologia</h1>
+        <h1>Astrotech</h1>
         <p>See your own stars</p>
         <Link id="start" to="/map">
           <h3>Start</h3>

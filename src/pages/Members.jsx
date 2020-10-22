@@ -5,7 +5,7 @@ import { Container } from '../styles/pages/members';
 import NavBar from '../components/pages/NavBar';
 
 import igoImage from '../assets/members/Igo.png';
-import isaImage from '../assets/members/Isa.png';
+import isaImage from '../assets/members/Isa.jpeg';
 import lauraImage from '../assets/members/Laura.jpeg';
 import vidroImage from '../assets/members/Vidro.jpeg';
 
