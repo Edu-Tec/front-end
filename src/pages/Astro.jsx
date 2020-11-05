@@ -8,9 +8,20 @@ import NavBar from '../components/pages/NavBar';
 
 import { Container } from '../styles/pages/astro';
 
+import whiteDwarf from '../assets/planets/ana_branca.PNG';
+import blackHole from '../assets/planets/buraco_negro.png';
+import blueStar from '../assets/planets/neutron_and_blue.png';
+import planetaryNebula from '../assets/planets/planetary_nebula.png';
+import redGiant from '../assets/planets/red_giant.png';
+import normalStar from '../assets/planets/small_and_big_star.png';
+import superRedGiant from '../assets/planets/super_red_giant.png';
+import superNova from '../assets/planets/supernova.png';
+import image404 from '../assets/planets/undefined.webp';
+
 import api from '../services/api';
 
 const Astro = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { id } = props.match.params;
   const [star, setStar] = useState({});
 
@@ -27,8 +38,44 @@ const Astro = (props) => {
       <NavBar fixed />
       <AstroDiv>
         <img
-          src={star.url_image ? api.defaults.baseURL + star.url_image : ''}
-          alt="eae"
+          src={
+            star.infos &&
+            (() => {
+              switch (star.infos.tipo) {
+                case 'Anã branca':
+                  return whiteDwarf;
+                case 'Anã vermelha':
+                  return redGiant;
+                case 'Buraco negro':
+                  return blackHole;
+                case 'Estrela de nêutrons':
+                  return blueStar;
+                case 'Estrela azul':
+                  return blueStar;
+                case 'Gigante azul':
+                  return blueStar;
+                case 'Supergigante azul':
+                  return blueStar;
+                case 'Nebulosa planetária':
+                  return planetaryNebula;
+                case 'Gigante vermelha':
+                  return redGiant;
+                case 'Estrela amarela':
+                  return normalStar;
+                case 'Gigante amarela':
+                  return normalStar;
+                case 'Supergigante amarela':
+                  return normalStar;
+                case 'Super gigante vermelha':
+                  return superRedGiant;
+                case 'Supernova':
+                  return superNova;
+                default:
+                  return image404;
+              }
+            })()
+          }
+          alt={star.nome}
           draggable={false}
         />
         <div id="infos">
@@ -65,7 +112,7 @@ const Astro = (props) => {
               </article>
               <article>
                 <b>Velocidade Radial: </b>
-                {star.infos.variabilidade_radial}
+                {star.infos.velocidade_radial}
               </article>
               <article>
                 <b>Paralaxe: </b>
