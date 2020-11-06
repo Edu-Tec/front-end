@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Map, Marker, /* TileLayer, */ Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
-import { FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiSearch } from 'react-icons/all';
 
 // import tileLayerImage from '../assets/images/TileLayer.jpg';
 
@@ -24,6 +24,7 @@ import api from '../services/api';
 
 function MapApp() {
   const [stars, setStars] = useState([]);
+  const [currentCenter, setCurrentCenter] = useState([0, 0]);
 
   const mapIcon = {
     icon1: Leaflet.icon({
@@ -87,18 +88,33 @@ function MapApp() {
       const { data } = await api.get('/');
       setStars(...stars, data);
     })();
-    // eslint-disable-next-line
   }, []);
 
-  // stars[Math.floor(Math.random() * stars.length)]
-  // ? [stars[0].position.latitude, stars[0].position.longitude]
-  // : [1, 1]
+  const handleSearchingStars = (e) => {
+    const newArray = [];
+    stars
+      .filter((opa) => {
+        return opa.nome.toLowerCase().includes(e.target.value.toLowerCase());
+      })
+      .map((searchStarsArray) => {
+        newArray.push(searchStarsArray);
+      });
+
+    setCurrentCenter(
+      // eslint-disable-next-line no-nested-ternary
+      e.target.value
+        ? newArray[0]
+          ? [newArray[0].position.latitude, newArray[0].position.longitude]
+          : [0, 0]
+        : [0, 0]
+    );
+  };
 
   return (
     <Container>
       <NavBar dark fixed />
       <Map
-        center={[0, 0]}
+        center={currentCenter}
         zoom={6}
         minZoom={4.5}
         style={{
@@ -106,7 +122,42 @@ function MapApp() {
           height: '100%',
         }}
       >
-        {/* <TileLayer url={backgroundImage} /> */}
+        <div id="search">
+          <FiSearch
+            size={25}
+            stroke="white"
+            onClick={() => {
+              switch (
+                // eslint-disable-next-line no-undef
+                document.querySelector('#search > input[type=search]').style
+                  .width
+              ) {
+                case '0px':
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.width = '20vw';
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.padding = '10px';
+                  break;
+
+                default:
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.width = 0;
+                  // eslint-disable-next-line no-undef
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.padding = 0;
+              }
+            }}
+          />
+          <input type="search" onChange={handleSearchingStars} />
+        </div>
 
         {stars.map((star) => {
           return (
