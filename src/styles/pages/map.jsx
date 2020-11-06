@@ -7,6 +7,34 @@ export const Container = styled.div`
   height: 100vh;
   overflow: hidden;
 
+  #search {
+    z-index: 999;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    margin-top: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+
+    input {
+      color: white;
+      background: rgba(255, 255, 255, 0.125);
+      border-radius: 10px;
+      width: 0;
+      height: 45px;
+      transition: 0.2s ease;
+      font-size: 1.2rem;
+      outline: none;
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.25);
+      }
+    }
+  }
+
   .leaflet-bar {
     background-color: transparent;
     top: 7.5vh;
