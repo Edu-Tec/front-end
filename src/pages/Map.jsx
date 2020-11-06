@@ -87,11 +87,13 @@ function MapApp() {
     (async () => {
       const { data } = await api.get('/');
       setStars(...stars, data);
+      console.log(data);
     })();
   }, []);
 
   const handleSearchingStars = (e) => {
     const newArray = [];
+
     stars
       .filter((opa) => {
         return opa.nome.toLowerCase().includes(e.target.value.toLowerCase());
@@ -115,8 +117,9 @@ function MapApp() {
       <NavBar dark fixed />
       <Map
         center={currentCenter}
-        zoom={6}
-        minZoom={4.5}
+        // zoom={6}
+        zoom={4.5}
+        minZoom={0}
         style={{
           width: '100%',
           height: '100%',
