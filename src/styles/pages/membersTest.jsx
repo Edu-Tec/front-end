@@ -20,6 +20,12 @@ export const Container = styled.div`
   color: white;
   overflow-x: hidden;
   overflow-y: hidden;
+  span {
+    font-size: 22px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   .starter {
     overflow-x: hidden;
     overflow-y: hidden;
@@ -37,9 +43,9 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       position: absolute;
-      left: 16%;
-      top: 26%;
-      transform: translate(-16%, -26%);
+      left: 17.75%;
+      top: 26.25%;
+      transform: translate(-17.75%, -26.25%);
     }
   }
 `;
@@ -89,6 +95,9 @@ export const Stars = styled(animated.div)`
 `;
 
 export const Start = styled(animated.button)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background-color: transparent;
   border: none;
   font-family: 'Poppins', sans-serif;
@@ -99,10 +108,5 @@ export const Start = styled(animated.button)`
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
-  }
-  &::after,
-  &::before {
-    color: white;
-    content: 'Content';
   }
 `;

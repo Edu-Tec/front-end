@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { VscDebugStart } from 'react-icons/vsc';
 
@@ -8,6 +8,7 @@ import { Container, Stars, Start } from '../styles/pages/membersTest';
 function MembersTest() {
   const [starsNumber, setStarsNumber] = useState([]);
   const [index, setIndex] = useState(0);
+  const history = useHistory();
   const calc = (x, y) => [
     x - window.innerWidth / 2,
     y - window.innerHeight / 2,
@@ -34,6 +35,7 @@ function MembersTest() {
   }, []);
   return (
     <Container>
+      <span>Astrotech</span>
       <section
         className="starter"
         onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
@@ -51,14 +53,13 @@ function MembersTest() {
               key={item}
             />
           ))}
-          <Link to="/map">
-            <Start
-              type="button"
-              style={{ transform: props.xy.interpolate(trans1) }}
-            >
-              <VscDebugStart />
-            </Start>
-          </Link>
+          <Start
+            type="button"
+            style={{ transform: props.xy.interpolate(trans1) }}
+            onClick={() => history.push('/map')}
+          >
+            Start <VscDebugStart />
+          </Start>
         </animated.div>
       </section>
     </Container>
