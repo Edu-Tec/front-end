@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Container, Stars, Start } from '../styles/parallaxBackground';
 
 // eslint-disable-next-line react/prop-types
 function MembersTest({ children, amount, button, friction, outEffect }) {
   const [starsNumber, setStarsNumber] = useState([]);
-  const history = useHistory();
   const calc = (x, y) => [
     // eslint-disable-next-line no-undef
     x - window.innerWidth / 2,
@@ -53,13 +52,14 @@ function MembersTest({ children, amount, button, friction, outEffect }) {
             />
           ))}
           {button ? (
-            <Start
-              type="button"
-              style={{ transform: props.xy.interpolate(trans1) }}
-              onClick={() => history.push('/map')}
-            >
-              {children}
-            </Start>
+            <Link style={{ textDecoration: 'none' }} to="/map">
+              <Start
+                type="button"
+                style={{ transform: props.xy.interpolate(trans1) }}
+              >
+                {children}
+              </Start>
+            </Link>
           ) : (
             !outEffect && children
           )}
