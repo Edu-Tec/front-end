@@ -12,10 +12,10 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/map" component={Map} />
-        <Route exact path="/members" component={Members} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/astro/:id" component={Astro} />
+        <Route path="/map" component={Map} />
+        <Route path="/members" component={Members} />
+        <Route path="/about" component={About} />
+        <Route path="/astro/:id" component={Astro} />
       </Switch>
     </BrowserRouter>
   );
