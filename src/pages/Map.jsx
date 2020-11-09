@@ -130,7 +130,7 @@ function MapApp() {
         return opa.nome.toLowerCase().includes(e.target.value);
       })
       .map((searchStarsArray) => {
-        newArray.push(searchStarsArray);
+        return newArray.push(searchStarsArray);
       });
 
     setCurrentCenter(

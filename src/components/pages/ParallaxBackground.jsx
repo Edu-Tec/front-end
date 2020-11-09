@@ -32,7 +32,7 @@ function MembersTest({ children, amount, button, friction, outEffect }) {
     for (let i = 0; i < amount; i += 1) {
       setStarsNumber((starsNumberVar) => [...starsNumberVar, i]);
     }
-  }, []);
+  }, [amount]);
   return (
     <Container>
       <section
