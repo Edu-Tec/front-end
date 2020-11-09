@@ -1,170 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
+import React from 'react';
 
 import { Container } from '../styles/pages/members';
+import ParallaxBackground from '../components/pages/ParallaxBackground';
 import NavBar from '../components/pages/NavBar';
-
-import igoImage from '../assets/members/Igo.png';
-import isaImage from '../assets/members/Isa.jpeg';
-import lauraImage from '../assets/members/Laura.jpeg';
-import vidroImage from '../assets/members/Vidro.jpeg';
+import Igor from '../assets/members/Igo.png';
+import Isa from '../assets/members/Isa.jpeg';
+import Laura from '../assets/members/Laura.jpeg';
+import Vitor from '../assets/members/Vidro.jpeg';
 
 function Members() {
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    $('.member')
-      .find('img')
-      .on('mouseenter', () => {
-        if ($('.membersDiv').find('img')[0]) {
-          switch ($('.membersDiv').find('img')[0].alt) {
-            case 'igo':
-              $('.membersDiv').find('p').addClass('helperAnimation');
-              $('.membersDiv').addClass('helperAnimationDiv');
-
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helpAnimationPOpacity');
-              }, 600);
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helperAnimation');
-              }, 800);
-              break;
-            case 'isa':
-              $('.membersDiv').find('p').addClass('helperAnimation');
-              $('.membersDiv').addClass('helperAnimationDiv');
-
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helpAnimationPOpacity');
-              }, 600);
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helperAnimation');
-              }, 800);
-              break;
-            case 'laura':
-              $('.membersDiv').find('p').addClass('helperAnimation');
-              $('.membersDiv').addClass('helperAnimationDiv');
-
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helpAnimationPOpacity');
-              }, 600);
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helperAnimation');
-              }, 800);
-              break;
-            case 'vidro':
-              $('.membersDiv').find('p').addClass('helperAnimation');
-              $('.membersDiv').addClass('helperAnimationDiv');
-
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helpAnimationPOpacity');
-              }, 600);
-              setTimeout(() => {
-                $('.membersDiv').find('p').addClass('helperAnimation');
-              }, 800);
-              break;
-            default:
-              break;
-          }
-        }
-      });
-
-    $('.membersDiv').on('mouseleave', () => {
-      if ($('.membersDiv').find('img')[0]) {
-        switch ($('.membersDiv').find('img')[0].alt) {
-          case 'igo':
-            $('.membersDiv').find('p').removeClass('helpAnimationPOpacity');
-            setTimeout(() => {
-              $('.membersDiv').find('p').removeClass('helperAnimation');
-            }, 200);
-            setTimeout(() => {
-              $('.membersDiv').removeClass('helperAnimationDiv');
-            }, 400);
-            break;
-          case 'isa':
-            $('.membersDiv').find('p').removeClass('helpAnimationPOpacity');
-            setTimeout(() => {
-              $('.membersDiv').find('p').removeClass('helperAnimation');
-            }, 200);
-            setTimeout(() => {
-              $('.membersDiv').removeClass('helperAnimationDiv');
-            }, 400);
-            break;
-          case 'laura':
-            $('.membersDiv').find('p').removeClass('helpAnimationPOpacity');
-            setTimeout(() => {
-              $('.membersDiv').find('p').removeClass('helperAnimation');
-            }, 200);
-            setTimeout(() => {
-              $('.membersDiv').removeClass('helperAnimationDiv');
-            }, 400);
-            break;
-          case 'vidro':
-            $('.membersDiv').find('p').removeClass('helpAnimationPOpacity');
-            setTimeout(() => {
-              $('.membersDiv').find('p').removeClass('helperAnimation');
-            }, 200);
-            setTimeout(() => {
-              $('.membersDiv').removeClass('helperAnimationDiv');
-            }, 400);
-            break;
-          default:
-            break;
-        }
-      }
-    });
-  }, []);
-
   return (
     <Container>
-      <NavBar />
-      <main>
-        <h1>Integrantes</h1>
-        <p>Aqueles que deram seu tempo para que consiga ver seus astros</p>
-        <div className="membersDiv">
-          <div
-            onMouseEnter={() => {
-              setText(
-                'Desenvolvedor full stack , além de matemático e físico. Adora resolver enigmas. Desbravador há 2 anos. 16 anos de pura sedução.'
-              );
-            }}
-            className="member"
-          >
-            <img src={igoImage} alt="igo" />
+      <NavBar dark fixed />
+      <ParallaxBackground amount={100} />
+      <section className="members">
+        <div className="igor">
+          <img src={Igor} alt="memberImage" title="Member Image" />
+          <div className="text">
+            <p>Desenvolvedor full stack.</p>
+            <p>Matemático e físico.</p>
+            <p>Adora resolver enigmas.</p>
+            <p>Desbravador há 2 anos.</p>
+            <p>16 anos de pura indiferença.</p>
+            <p>IGOR</p>
           </div>
-          <div
-            onMouseEnter={() => {
-              setText(
-                'Domina tanto humanas quanto exatas. Ama astronomia e filosofia. Seu passatempo preferido é ler e maratonar séries. Aspirante a escritora. 16 anos de puro existencialismo.'
-              );
-            }}
-            className="member"
-          >
-            <img src={isaImage} alt="isa" />
-          </div>
-          <div
-            onMouseEnter={() => {
-              setText(
-                'Trabalhou na Diretoria Regional de Educação por 1 ano. Desbravadora há 6 anos. Adora maquiagem, esportes e história. 16 anos de puro carinho.'
-              );
-            }}
-            className="member"
-          >
-            <img src={lauraImage} alt="laura" />
-          </div>
-          <div
-            onMouseEnter={() => {
-              setText(
-                'Desenvolvedor full stack , além de matemático e químico nas horas vagas. Desbravador há 3 anos. 16 anos de pura de sedução.'
-              );
-            }}
-            className="member"
-          >
-            <img src={vidroImage} alt="vidro" />
-          </div>
-          <p>{text}</p>
         </div>
-      </main>
-      <footer />
+        <div className="isa">
+          <img src={Isa} alt="memberImage" title="Member Image" />
+          <div className="text">
+            <p>Domina tanto humanas quanto exatas.</p>
+            <p>Ama astronomia e filosofia.</p>
+            <p>Seu passatempo preferido é ler e maratonar séries.</p>
+            <p>Aspirante a escritora.</p>
+            <p>16 anos de puro existencialismo.</p>
+            <p>ISABELLA</p>
+          </div>
+        </div>
+        <div className="laura">
+          <img src={Laura} alt="memberImage" title="Member Image" />
+          <div className="text">
+            <p>Trabalhou na Diretoria Regional de Educação</p>
+            <p>Paixão por história.</p>
+            <p>Adora maquiagem, esportes</p>
+            <p>Desbravadora há 6 anos.</p>
+            <p>16 anos de puro carinho.</p>
+            <p>LAURA</p>
+          </div>
+        </div>
+        <div className="vitor">
+          <img src={Vitor} alt="memberImage" title="Member Image" />
+          <div className="text">
+            <p>Desenvolvedor full stack.</p>
+            <p>Matemático e químico.</p>
+            <p>Usa lógica como entretenimento</p>
+            <p>Desbravador há 3 anos.</p>
+            <p>16 anos de pura notoriedade.</p>
+            <p>VITOR</p>
+          </div>
+        </div>
+      </section>
     </Container>
   );
 }

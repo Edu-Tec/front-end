@@ -1,114 +1,149 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const colors = {
+  igo: '#0000ff',
+  isa: '#ffffff',
+  isaBlack: '#000000',
+  laura: '#800080',
+  vitor: '#ff0000',
+};
+
+const appearList = keyframes`
+  from{
+    transform: translateX(-150%);
+  }
+  to{
+    transform: translateX(0%);
+  }
+`;
+const appearName = keyframes`
+  from{
+    transform: translateX(-500%);
+  }
+  to{
+    transform: translateX(0);
+  }
+`;
 
 export const Container = styled.div`
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  background-image: url('https://wallpapershome.com/images/pages/pic_h/18295.jpg');
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  h1,
-  h2,
-  p {
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    color: white;
-  }
-  nav {
+  color: white;
+  will-change: translateX;
+  .members {
     width: 100%;
-    height: 50px;
-    padding: 0 30px;
+    height: calc(100% - 51px);
     display: flex;
+    margin-top: 50px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    background-color: #00000030;
-    div {
-      width: 20%;
+    .igor,
+    .isa,
+    .laura,
+    .vitor {
+      width: 25%;
+      height: 100%;
+      padding: 10px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      .link {
-        text-decoration: none;
-        color: white;
+      transition: 500ms ease-out;
+      .text {
+        width: 100%;
+        height: 100%;
+        margin-top: 20px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        p {
+          transform: translateX(-500%);
+          font-size: 22px;
+        }
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      &:hover {
+        .text {
+          p:nth-of-type(1) {
+            animation: ${appearList} ease-out 500ms;
+            animation-fill-mode: both;
+          }
+          p:nth-of-type(2) {
+            animation: ${appearList} ease-out 900ms;
+            animation-fill-mode: both;
+          }
+          p:nth-of-type(3) {
+            animation: ${appearList} ease-out 1300ms;
+            animation-fill-mode: both;
+          }
+          p:nth-of-type(4) {
+            animation: ${appearList} ease-out 1700ms;
+            animation-fill-mode: both;
+          }
+          p:nth-of-type(5) {
+            animation: ${appearList} ease-out 2100ms;
+            animation-fill-mode: both;
+          }
+          p:nth-of-type(6) {
+            animation: ${appearName} ease-out 2500ms;
+            animation-fill-mode: both;
+          }
+        }
       }
     }
-  }
-  main {
-    display: flex;
-    flex-direction: column;
-    h1 {
-      font-size: 48px;
+    .igor {
+      transition: ease-out 500ms;
+      &:hover {
+        background-color: ${colors.igo}30;
+      }
+      p:nth-of-type(6) {
+        color: ${colors.igo};
+        font-size: 26px;
+        justify-self: center;
+      }
     }
-    p {
-      font-size: 16px;
-      padding: 0 3px;
+    .isa {
+      transition: ease-out 500ms;
+      &:hover {
+        background-color: ${colors.isa}30;
+      }
+      p:nth-of-type(6) {
+        color: ${colors.isaBlack};
+        font-size: 26px;
+        justify-self: center;
+      }
     }
-  }
-
-  .membersDiv {
-    width: 25vw; //60vw
-    height: 25vw; //30vw
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    margin: 50px auto 75px auto;
-    transition: 0.5s ease;
-    p {
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 0 0 25px rgba(255, 255, 255, 0.65);
-      transform: scale(0);
-      transition: 0.5s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
+    .laura {
+      transition: ease-out 500ms;
+      &:hover {
+        background-color: ${colors.laura}30;
+      }
+      p:nth-of-type(6) {
+        color: ${colors.laura};
+        font-size: 26px;
+        justify-self: center;
+      }
     }
-  }
-  .member {
-    align-self: center;
-    justify-self: center;
-  }
-  .helperAnimation {
-    transform: scale(1) !important;
-    grid-column: 2 / 2;
-    grid-row: 2 / 2;
-  }
-  .helpAnimationPOpacity {
-    opacity: 1 !important;
-  }
-  .helperAnimationDiv {
-    width: 60vw;
-    height: 30vw;
-  }
-  .member {
-    img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    &:nth-child(1) {
-      grid-column: 1 / 1;
-      grid-row: 1 / 1;
-    }
-    &:nth-child(2) {
-      grid-column: 1 / 1;
-      grid-row: 3 / 3;
-    }
-    &:nth-child(3) {
-      grid-column: 3 / 3;
-      grid-row: 3 / 3;
-    }
-    &:nth-child(4) {
-      grid-column: 3 / 3;
-      grid-row: 1 / 1;
+    .vitor {
+      transition: ease-out 500ms;
+      &:hover {
+        background-color: ${colors.vitor}30;
+      }
+      p:nth-of-type(6) {
+        color: ${colors.vitor};
+        font-size: 26px;
+        justify-self: center;
+      }
     }
   }
 `;

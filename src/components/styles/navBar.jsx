@@ -6,7 +6,6 @@ export const Container = styled.div`
     if (fixed) {
       return 'fixed';
     }
-
     return 'initial';
   }};
   top: 0;
@@ -40,5 +39,19 @@ export const Container = styled.div`
     background-color: ${(props) => {
       return props.dark ? 'rgba(255,255,255,.25)' : '#00000098';
     }};
+  }
+  @media screen and (max-width: 940px) {
+    nav {
+      div {
+        width: 40%;
+      }
+    }
+  }
+  @media screen and (max-width: 520px) {
+    nav {
+      div {
+        width: 60%;
+      }
+    }
   }
 `;

@@ -51,6 +51,38 @@ export const Container = styled.div`
       transform: translate(-18.75%, -30%);
     }
   }
+  @media screen and (max-width: 1024px) {
+    .starter {
+      .starsBox {
+        left: 27.25%;
+        transform: translateX(-27.25%);
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .starter {
+      .starsBox {
+        left: 36.25%;
+        transform: translateX(-36.25%);
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .starter {
+      .starsBox {
+        left: 62.75%;
+        transform: translateX(-62.75%);
+      }
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .starter {
+      .starsBox {
+        left: 81.75%;
+        transform: translateX(-81.75%);
+      }
+    }
+  }
 `;
 
 const shineAnimation = ({ sizeValue, leftValue, topValue, mult }) => keyframes`
@@ -101,6 +133,7 @@ export const Start = styled(animated.button)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   font-family: 'Poppins', sans-serif;
