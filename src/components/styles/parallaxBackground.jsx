@@ -6,14 +6,17 @@ import { animated } from 'react-spring';
 
 import backgroundImage from '../../assets/images/home-background.jpg';
 
-const getRandom = (value) => {
-  return Math.floor(Math.random() * value) + 1;
-};
+// const getRandom = (value) => {
+//   return Math.floor(Math.random() * value) + 1;
+// };
 
 export const Container = styled.div`
   margin: 0;
   padding: 0;
   outline: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   font-family: 'Poppins', sans-serif;
   background-color: black;
   /* background-image: url(${backgroundImage}); */
@@ -43,9 +46,9 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       position: absolute;
-      left: 17.75%;
-      top: 26.25%;
-      transform: translate(-17.75%, -26.25%);
+      left: 18.75%;
+      top: 30%;
+      transform: translate(-18.75%, -30%);
     }
   }
 `;
@@ -90,7 +93,7 @@ export const Stars = styled(animated.div)`
         topValue: props.top,
         mult: 5,
       })}
-    ${(props) => props.shineTime} ease-in-out infinite;
+    ${(props) => props.shinetime} ease-in-out infinite;
   transform-origin: center center;
 `;
 
@@ -104,9 +107,19 @@ export const Start = styled(animated.button)`
   color: white;
   font-size: 50px;
   cursor: pointer;
+  transition: 0.3s ease;
   &:focus {
     box-shadow: 0 0 0 0;
     border: 0 none;
     outline: 0;
+  }
+
+  &:hover {
+    transform: scale(1.25) !important;
+    color: gray;
+
+    svg {
+      stroke: gray;
+    }
   }
 `;

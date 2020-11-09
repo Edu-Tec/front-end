@@ -1,111 +1,95 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-import backgroundAbout from '../../assets/images/about-background.jpg';
-
-const togetherAnimationMembers = keyframes`
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const vitoAnimation = keyframes`
-  to {
-    transform: translate(0,0);
-  }
-`;
+// import backgroundAbout from '../../assets/images/about-background.jpg';
 
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url(${backgroundAbout});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 50px;
+  padding-top: 65px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
 
-  #about-us-embed-isa {
-    width: 100vw;
-    height: fit-content;
+  #start {
     color: white;
-    font-size: 1.5rem;
-    position: relative;
+    font-size: 3rem;
     display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 2.5vh;
+    cursor: pointer;
+    margin-top: -50px;
+    font-weight: 700;
+    text-decoration: none;
+    transform: scale(0);
+    transition: 0.65s ease-out;
+    text-shadow: 0 0 25px black;
 
-    h2 {
-      transform: translateX(-55vw);
-      animation: ${togetherAnimationMembers} 0.75s ease forwards;
-    }
-
-    img {
-      transform: translateX(50vw);
-      width: 10vw;
-      position: absolute;
-      top: -430%;
-      left: 50%;
+    svg,
+    b {
       transition: 0.2s ease;
-      animation: ${togetherAnimationMembers} 1s 1s ease forwards;
     }
 
     &:hover {
-      img {
-        opacity: 0.35;
+      opacity: 0.75;
+      text-shadow: 0 0 25px white;
+      b {
+        transform: translate(0, -5px);
+      }
+      svg {
+        transform: translate(0, 5px) scale(1.25);
       }
     }
   }
+`;
 
-  #about-us-embed-vito {
-    width: fit-content;
-    height: fit-content;
-    color: white;
-    font-size: 1.5rem;
-    position: relative;
-    display: flex;
-    align-items: center;
-    font-size: 36px;
-    position: absolute;
-    bottom: 0;
-    margin: 0 auto;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    padding: 10px;
-    justify-content: center;
-    width: 100vw;
+export const InfoDiv = styled.div`
+  width: 80vw;
+  height: fit-content;
+  font-weight: bold;
+  padding: 50px;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  transition: 1s ease;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+
+  .infos {
+    width: 91%;
     height: 50vh;
-    gap: 5vw;
+    padding-right: 50px;
+    text-align: justify;
+    transition: 1.5s ease;
+    margin-top: 50px;
+    overflow: auto !important;
+  }
 
-    img {
-      width: 10vw;
-      margin: -11.5% 0 -0.5% -8.5%;
-      transition: 0.2s ease;
-      z-index: 1;
-      transform: translate(0, 32.5vh);
-      animation: ${vitoAnimation} 2s 2.5s ease forwards;
-    }
-
-    h2 {
-      margin: 0 -0.05% 1.25% 0;
-      transform: translate(-55vw, 0);
-      animation: ${vitoAnimation} 1s 2s ease forwards;
-    }
-
-    h3 {
-      margin: -15% 0 1.65% -6.25%;
-      font-size: 48px;
-      z-index: 0;
-      transform: translate(55vw, 0);
-      animation: ${vitoAnimation} 1s 2s ease forwards;
-    }
+  svg {
+    transition: 100ms ease;
+    cursor: pointer;
 
     &:hover {
-      img {
-        opacity: 0.35;
-      }
+      opacity: 0.5;
+    }
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.45);
+    color: black;
+
+    svg:hover {
+      transition: 100ms ease;
+      opacity: 1;
+      fill: white;
     }
   }
 `;

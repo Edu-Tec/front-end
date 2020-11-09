@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-image: url('https://wallpapershome.com/images/pages/pic_h/18295.jpg');
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,18 +38,20 @@ export const Container = styled.div`
     transition: 0.5s ease;
     text-decoration: none;
     font-size: 1rem;
-  }
-  #start svg {
-    transition: 0.5s ease;
-  }
-  #start h5 {
-    font-weight: normal;
-  }
-  #start:hover {
-    color: gray;
 
     svg {
-      stroke: gray;
+      transition: 0.5s ease;
+    }
+
+    h5 {
+      font-weight: normal;
+    }
+    &:hover {
+      color: gray;
+
+      svg {
+        stroke: gray;
+      }
     }
   }
 `;

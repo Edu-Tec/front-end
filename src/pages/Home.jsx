@@ -1,23 +1,17 @@
 import React from 'react';
-import { FiArrowRight } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { VscDebugStart } from 'react-icons/all';
 
 import { Container } from '../styles/pages/home';
 import NavBar from '../components/pages/NavBar';
+import ParallaxBackground from '../components/pages/ParallaxBackground';
 
 function Home() {
   return (
     <Container>
-      <NavBar />
-      <main>
-        <h1>Astrotech</h1>
-        <p>See your own stars</p>
-        <Link id="start" to="/map">
-          <h3>Start</h3>
-          <FiArrowRight stroke="white" size={36} />
-        </Link>
-      </main>
-      <footer />
+      <NavBar dark fixed />
+      <ParallaxBackground amount={100} button>
+        Iniciar <VscDebugStart />
+      </ParallaxBackground>
     </Container>
   );
 }

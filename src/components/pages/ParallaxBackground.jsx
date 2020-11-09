@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
-import { VscDebugStart } from 'react-icons/vsc';
+import { useHistory } from 'react-router-dom';
 
-import { Container, Stars, Start } from '../styles/pages/membersTest';
+import { Container, Stars, Start } from '../styles/parallaxBackground';
 
-function MembersTest() {
+// eslint-disable-next-line react/prop-types
+function MembersTest({ children, amount, button, friction, outEffect }) {
   const [starsNumber, setStarsNumber] = useState([]);
-  const [index, setIndex] = useState(0);
   const history = useHistory();
   const calc = (x, y) => [
+    // eslint-disable-next-line no-undef
     x - window.innerWidth / 2,
+    // eslint-disable-next-line no-undef
     y - window.innerHeight / 2,
   ];
   const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`;
-  const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
+  // const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 230}px,0)`;
   const trans3 = (x, y) => `translate3d(${x / 6 - 250}px,${y / 6 - 200}px,0)`;
-  const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`;
+  // const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`;
 
   const [props, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 10, tension: 550, friction: 450 },
+    config: { mass: 10, tension: 550, friction: friction || 450 },
   }));
 
   const getRandom = (value, initialValue) => {
@@ -28,14 +29,12 @@ function MembersTest() {
   };
 
   useEffect(() => {
-    setIndex(getRandom(4, 1));
-    for (let i = 0; i < 100; i += 1) {
+    for (let i = 0; i < amount; i += 1) {
       setStarsNumber((starsNumberVar) => [...starsNumberVar, i]);
     }
   }, []);
   return (
     <Container>
-      <span>Astrotech</span>
       <section
         className="starter"
         onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
@@ -49,18 +48,24 @@ function MembersTest() {
               left={`${getRandom(window.innerWidth, 1)}px`}
               top={`${getRandom(window.innerHeight, 1)}px`}
               size={`${getRandom(5, 1)}`}
-              shineTime={`${getRandom(10, 2)}s`}
+              shinetime={`${getRandom(10, 2)}s`}
               key={item}
             />
           ))}
-          <Start
-            type="button"
-            style={{ transform: props.xy.interpolate(trans1) }}
-            onClick={() => history.push('/map')}
-          >
-            Start <VscDebugStart />
-          </Start>
+          {button ? (
+            <Start
+              type="button"
+              style={{ transform: props.xy.interpolate(trans1) }}
+              onClick={() => history.push('/map')}
+            >
+              {children}
+            </Start>
+          ) : (
+            !outEffect && children
+          )}
         </animated.div>
+
+        {outEffect && children}
       </section>
     </Container>
   );

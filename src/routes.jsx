@@ -7,8 +7,6 @@ import Members from './pages/Members';
 import About from './pages/About';
 import Astro from './pages/Astro';
 
-import MembersTest from './pages/MembersTest';
-
 const Routes = () => {
   return (
     <BrowserRouter>
@@ -18,10 +16,6 @@ const Routes = () => {
         <Route exact path="/members" component={Members} />
         <Route exact path="/about" component={About} />
         <Route exact path="/astro/:id" component={Astro} />
-
-        {/* Vito muçando */}
-
-        <Route exact path="/membersTest" component={MembersTest} />
       </Switch>
     </BrowserRouter>
   );
