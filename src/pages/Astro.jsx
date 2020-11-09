@@ -189,6 +189,14 @@ const getInAstroAnimation = keyframes`
   }
 `;
 
+const getInAstroAnimationMobile = keyframes`
+  to {
+    left: 50%;
+    top: 0;
+    transform: rotate(0deg) translate(-50%);
+  }
+`;
+
 const getInInfosAnimation = keyframes`
   to {
     opacity: 1;
@@ -260,6 +268,25 @@ const AstroDiv = styled.div`
     &:hover {
       background: rgba(255, 255, 255, 0.45);
       color: black;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    overflow: auto;
+
+    img {
+      animation: ${getInAstroAnimationMobile} 1.5s 0.75s forwards;
+      position: relative;
+      margin: 10vh 0 2.5vh 0;
+    }
+
+    #infos {
+      overflow: auto;
+      margin: 0;
+      width: 100%;
+      padding: 25px;
+      margin-top: 2.5vh;
     }
   }
 `;

@@ -26,7 +26,7 @@ const appearName = keyframes`
 `;
 
 export const Container = styled.div`
-  overflow: hidden;
+  /* overflow: hidden; */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -47,7 +47,7 @@ export const Container = styled.div`
     .laura,
     .vitor {
       width: 25%;
-      height: 100%;
+      height: fit-content;
       padding: 10px;
       display: flex;
       flex-direction: column;
@@ -143,6 +143,27 @@ export const Container = styled.div`
         color: ${colors.vitor};
         font-size: 26px;
         justify-self: center;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+
+      .igor,
+      .isa,
+      .laura,
+      .vitor {
+        overflow: hidden;
+        flex-direction: row;
+        width: 100vw;
+      }
+
+      .text {
+        overflow: auto !important;
+      }
+
+      img {
+        margin-right: 7.5vw;
       }
     }
   }

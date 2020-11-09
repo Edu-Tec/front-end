@@ -288,7 +288,7 @@ const MapApp = () => {
                   // eslint-disable-next-line no-undef
                   document.querySelector(
                     '#search > input[type=search]'
-                  ).style.width = '20vw';
+                  ).style.width = window.innerWidth >= 768 ? '20vw' : '85vw';
                   // eslint-disable-next-line no-undef
                   document.querySelector(
                     '#search > input[type=search]'

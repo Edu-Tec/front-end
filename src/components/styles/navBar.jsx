@@ -22,6 +22,9 @@ export const Container = styled.div`
     justify-content: space-between;
     transition: 0.5s ease;
     background-color: #00000030;
+    img {
+      width: 48px;
+    }
     div {
       width: 20%;
       display: flex;
@@ -31,6 +34,19 @@ export const Container = styled.div`
       .link {
         text-decoration: none;
         color: white;
+      }
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      & div {
+        display: none;
       }
     }
   }

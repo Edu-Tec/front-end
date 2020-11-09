@@ -1,33 +1,5 @@
 import styled from 'styled-components';
 
-export const Search = styled.div`
-  z-index: 999;
-  position: fixed;
-  top: 50px;
-  right: 10px;
-  margin-top: 15px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1vw;
-
-  input {
-    color: white;
-    background: rgba(255, 255, 255, 0.125);
-    border-radius: 10px;
-    width: 0;
-    height: 45px;
-    transition: 0.2s ease;
-    font-size: 1.2rem;
-    outline: none;
-
-    &:focus {
-      background: rgba(255, 255, 255, 0.25);
-    }
-  }
-`;
-
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -67,6 +39,12 @@ export const Container = styled.div`
 
       &:focus {
         background: rgba(255, 255, 255, 0.25);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      svg {
+        margin-right: 2.5vw;
       }
     }
   }

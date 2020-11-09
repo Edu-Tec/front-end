@@ -21,6 +21,8 @@ const About = () => {
         $('.infoBlock').css('transform', 'translate(0)');
       }, 100);
       setCurrentContainer(currentContainer + 1);
+      const top = currentContainer + 1 === 1 && 'top-7.5vh'.split('-');
+      $('.title').css(top[0], top[1]);
     }, 1000);
   };
 
@@ -29,9 +31,7 @@ const About = () => {
       case 0:
         return (
           <InfoDiv className="infoBlock">
-            <h1 style={{ position: 'absolute', top: '50px' }}>
-              Nascimento das estrelas
-            </h1>
+            <h1 className="title">Nascimento das estrelas</h1>
             <div className="infos">
               <h2>Nebulosas</h2>
               <br />
@@ -111,7 +111,7 @@ const About = () => {
       case 1:
         return (
           <InfoDiv className="infoBlock">
-            <h1 style={{ position: 'absolute', top: '50px' }}>Maturidade</h1>
+            <h1 className="title">Maturidade</h1>
             <div className="infos">
               <h2>Nebulosas</h2>
               <br />
@@ -261,9 +261,7 @@ const About = () => {
       case 2:
         return (
           <InfoDiv className="infoBlock">
-            <h1 style={{ position: 'absolute', top: '50px' }}>
-              Estágios Finais
-            </h1>
+            <h1 className="title">Estágios Finais</h1>
             <div className="infos">
               <h2>Supernovas</h2>
               <br />
