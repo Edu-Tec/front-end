@@ -5,7 +5,7 @@ import { Map, Marker, Popup } from 'react-leaflet';
 import Leaflet from 'leaflet';
 import { FiArrowRight, FiSearch } from 'react-icons/all';
 
-import { Container, Search } from '../styles/pages/map';
+import { Container } from '../styles/pages/map';
 import NavBar from '../components/pages/NavBar';
 import ParallaxBackground from '../components/pages/ParallaxBackground';
 
@@ -109,6 +109,9 @@ const mapIcon = {
 function MapApp() {
   const [stars, setStars] = useState([]);
   const [currentCenter, setCurrentCenter] = useState([0, 0]);
+  const southWest = Leaflet.latLng(-200, -380);
+  const northEast = Leaflet.latLng(200, 380);
+  const bounds = Leaflet.latLngBounds(southWest, northEast);
 
   useEffect(() => {
     (async () => {
@@ -127,7 +130,7 @@ function MapApp() {
 
     stars
       .filter((opa) => {
-        return opa.nome.toLowerCase().includes(e.target.value);
+        return opa.nome.toLowerCase().includes(e.target.value.toLowerCase());
       })
       .map((searchStarsArray) => {
         return newArray.push(searchStarsArray);
@@ -145,179 +148,171 @@ function MapApp() {
 
   return (
     <>
-      <Container>
+      <Container style={{ background: 'black' }}>
         <NavBar dark fixed />
         <ParallaxBackground amount={50} friction={800}>
-          <MapWithAll currentCenter={currentCenter} stars={stars} />
+          <Map
+            center={currentCenter}
+            zoom={3.75}
+            minZoom={3.75}
+            maxBounds={bounds}
+            zoomControl={false}
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+          >
+            {stars.map((star) => {
+              return (
+                <Marker
+                  // eslint-disable-next-line no-underscore-dangle
+                  key={star._id}
+                  icon={(() => {
+                    switch (star.infos.tipo) {
+                      case 'Anã branca':
+                        return mapIcon.icon1;
+                      case 'Anã vermelha':
+                        return mapIcon.icon5;
+                      case 'Anã marrom':
+                        return mapIcon.icon10;
+                      case 'Anã amarela':
+                        return mapIcon.icon12;
+                      case 'Anã negra':
+                        return mapIcon.icon11;
+                      case 'Hipergigante amarela':
+                        return mapIcon.icon13;
+                      case 'Buraco negro':
+                        return mapIcon.icon2;
+                      case 'Estrela de nêutrons':
+                        return mapIcon.icon3;
+                      case 'Estrela azul':
+                        return mapIcon.icon3;
+                      case 'Gigante azul':
+                        return mapIcon.icon3;
+                      case 'Supergigante azul':
+                        return mapIcon.icon3;
+                      case 'Nebulosa planetária':
+                        return mapIcon.icon4;
+                      case 'Gigante vermelha':
+                        return mapIcon.icon5;
+                      case 'Estrela amarela':
+                        return mapIcon.icon6;
+                      case 'Gigante amarela':
+                        return mapIcon.icon6;
+                      case 'Supergigante amarela':
+                        return mapIcon.icon6;
+                      case 'Super gigante vermelha':
+                        return mapIcon.icon7;
+                      case 'Supernova':
+                        return mapIcon.icon8;
+                      default:
+                        return mapIcon.icon9;
+                    }
+                  })()}
+                  position={[star.position.latitude, star.position.longitude]}
+                >
+                  <Popup
+                    closeButton={false}
+                    minWidth={240}
+                    maxWidth={240}
+                    className="map-popup"
+                  >
+                    <img
+                      src={(() => {
+                        switch (star.infos.tipo) {
+                          case 'Anã branca':
+                            return whiteDwarf;
+                          case 'Anã vermelha':
+                            return redGiant;
+                          case 'Anã marrom':
+                            return anaMarrom;
+                          case 'Anã negra':
+                            return anaNegra;
+                          case 'Anã amarela':
+                            return anaAmarela;
+                          case 'Hipergigante amarela':
+                            return hiperGiganteAmarela;
+                          case 'Buraco negro':
+                            return blackHole;
+                          case 'Estrela de nêutrons':
+                            return blueStar;
+                          case 'Estrela azul':
+                            return blueStar;
+                          case 'Gigante azul':
+                            return blueStar;
+                          case 'Supergigante azul':
+                            return blueStar;
+                          case 'Nebulosa planetária':
+                            return planetaryNebula;
+                          case 'Gigante vermelha':
+                            return redGiant;
+                          case 'Estrela amarela':
+                            return normalStar;
+                          case 'Gigante amarela':
+                            return normalStar;
+                          case 'Supergigante amarela':
+                            return normalStar;
+                          case 'Super gigante vermelha':
+                            return superRedGiant;
+                          case 'Supernova':
+                            return superNova;
+                          default:
+                            return image404;
+                        }
+                      })()}
+                      alt={star.nome}
+                    />
+                    {star.nome}
+                    {/* eslint-disable-next-line no-underscore-dangle */}
+                    <Link style={{ color: 'black' }} to={`/astro/${star._id}`}>
+                      <FiArrowRight size={32} />
+                    </Link>
+                  </Popup>
+                </Marker>
+              );
+            })}
+          </Map>
         </ParallaxBackground>
-      </Container>
-      <Search id="search">
-        <FiSearch
-          size={25}
-          stroke="white"
-          onClick={() => {
-            switch (
-              // eslint-disable-next-line no-undef
-              document.querySelector('#search > input[type=search]').style.width
-            ) {
-              case '0px':
-                // eslint-disable-next-line no-undef
-                document.querySelector(
-                  '#search > input[type=search]'
-                ).style.width = '20vw';
-                // eslint-disable-next-line no-undef
-                document.querySelector(
-                  '#search > input[type=search]'
-                ).style.padding = '10px';
-                break;
 
-              default:
+        <div id="search">
+          <FiSearch
+            size={25}
+            stroke="white"
+            onClick={() => {
+              switch (
                 // eslint-disable-next-line no-undef
-                document.querySelector(
-                  '#search > input[type=search]'
-                ).style.width = 0;
-                // eslint-disable-next-line no-undef
-                // eslint-disable-next-line no-undef
-                document.querySelector(
-                  '#search > input[type=search]'
-                ).style.padding = 0;
-            }
-          }}
-        />
-        <input type="search" onChange={handleSearchingStars} />
-      </Search>
+                document.querySelector('#search > input[type=search]').style
+                  .width
+              ) {
+                case '0px':
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.width = '20vw';
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.padding = '10px';
+                  break;
+
+                default:
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.width = 0;
+                  // eslint-disable-next-line no-undef
+                  // eslint-disable-next-line no-undef
+                  document.querySelector(
+                    '#search > input[type=search]'
+                  ).style.padding = 0;
+              }
+            }}
+          />
+          <input type="search" onChange={handleSearchingStars} />
+        </div>
+      </Container>
     </>
   );
 }
-
-const MapWithAll = ({ stars, currentCenter }) => {
-  const southWest = Leaflet.latLng(-200, -380);
-  const northEast = Leaflet.latLng(200, 380);
-  const bounds = Leaflet.latLngBounds(southWest, northEast);
-
-  return (
-    <Map
-      center={currentCenter}
-      zoom={3.75}
-      minZoom={3.75}
-      maxBounds={bounds}
-      zoomControl={false}
-      style={{
-        width: '100%',
-        height: '100%',
-      }}
-    >
-      {stars.map((star) => {
-        return (
-          <Marker
-            // eslint-disable-next-line no-underscore-dangle
-            key={star._id}
-            icon={(() => {
-              switch (star.infos.tipo) {
-                case 'Anã branca':
-                  return mapIcon.icon1;
-                case 'Anã vermelha':
-                  return mapIcon.icon5;
-                case 'Anã marrom':
-                  return mapIcon.icon10;
-                case 'Anã amarela':
-                  return mapIcon.icon12;
-                case 'Anã negra':
-                  return mapIcon.icon11;
-                case 'Hipergigante amarela':
-                  return mapIcon.icon13;
-                case 'Buraco negro':
-                  return mapIcon.icon2;
-                case 'Estrela de nêutrons':
-                  return mapIcon.icon3;
-                case 'Estrela azul':
-                  return mapIcon.icon3;
-                case 'Gigante azul':
-                  return mapIcon.icon3;
-                case 'Supergigante azul':
-                  return mapIcon.icon3;
-                case 'Nebulosa planetária':
-                  return mapIcon.icon4;
-                case 'Gigante vermelha':
-                  return mapIcon.icon5;
-                case 'Estrela amarela':
-                  return mapIcon.icon6;
-                case 'Gigante amarela':
-                  return mapIcon.icon6;
-                case 'Supergigante amarela':
-                  return mapIcon.icon6;
-                case 'Super gigante vermelha':
-                  return mapIcon.icon7;
-                case 'Supernova':
-                  return mapIcon.icon8;
-                default:
-                  return mapIcon.icon9;
-              }
-            })()}
-            position={[star.position.latitude, star.position.longitude]}
-          >
-            <Popup
-              closeButton={false}
-              minWidth={240}
-              maxWidth={240}
-              className="map-popup"
-            >
-              <img
-                src={(() => {
-                  switch (star.infos.tipo) {
-                    case 'Anã branca':
-                      return whiteDwarf;
-                    case 'Anã vermelha':
-                      return redGiant;
-                    case 'Anã marrom':
-                      return anaMarrom;
-                    case 'Anã negra':
-                      return anaNegra;
-                    case 'Anã amarela':
-                      return anaAmarela;
-                    case 'Hipergigante amarela':
-                      return hiperGiganteAmarela;
-                    case 'Buraco negro':
-                      return blackHole;
-                    case 'Estrela de nêutrons':
-                      return blueStar;
-                    case 'Estrela azul':
-                      return blueStar;
-                    case 'Gigante azul':
-                      return blueStar;
-                    case 'Supergigante azul':
-                      return blueStar;
-                    case 'Nebulosa planetária':
-                      return planetaryNebula;
-                    case 'Gigante vermelha':
-                      return redGiant;
-                    case 'Estrela amarela':
-                      return normalStar;
-                    case 'Gigante amarela':
-                      return normalStar;
-                    case 'Supergigante amarela':
-                      return normalStar;
-                    case 'Super gigante vermelha':
-                      return superRedGiant;
-                    case 'Supernova':
-                      return superNova;
-                    default:
-                      return image404;
-                  }
-                })()}
-                alt={star.nome}
-              />
-              {star.nome}
-              {/* eslint-disable-next-line no-underscore-dangle */}
-              <Link style={{ color: 'black' }} to={`/astro/${star._id}`}>
-                <FiArrowRight size={32} />
-              </Link>
-            </Popup>
-          </Marker>
-        );
-      })}
-    </Map>
-  );
-};
 
 export default MapApp;
