@@ -106,7 +106,7 @@ const mapIcon = {
   }),
 };
 
-function MapApp() {
+const MapApp = () => {
   const [stars, setStars] = useState([]);
   const [currentCenter, setCurrentCenter] = useState([0, 0]);
   const southWest = Leaflet.latLng(-200, -380);
@@ -313,6 +313,6 @@ function MapApp() {
       </Container>
     </>
   );
-}
+};
 
 export default MapApp;
