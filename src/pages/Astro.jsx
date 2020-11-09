@@ -4,7 +4,6 @@ import styled, { keyframes } from 'styled-components';
 
 import { FiArrowLeft } from 'react-icons/fi';
 
-import $ from 'jquery';
 import NavBar from '../components/pages/NavBar';
 import ParallaxBackground from '../components/pages/ParallaxBackground';
 
@@ -212,6 +211,7 @@ const AstroDiv = styled.div`
     top: -5vh;
     left: -65vw;
     border-radius: 50%;
+    background: transparent;
     border: 0;
     transition: 0.5s ease;
     /* -webkit-touch-callout: none;
