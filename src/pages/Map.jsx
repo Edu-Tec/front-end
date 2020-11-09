@@ -20,7 +20,7 @@ import superNova from '../assets/planets/supernova.png';
 import anaMarrom from '../assets/planets/ana_marrom.png';
 import anaNegra from '../assets/planets/ana_negra.png';
 import anaAmarela from '../assets/planets/ana_amarela.png';
-import hiperGiganteAmarela from '../assets/planets/hipergigante_amarela.jpg';
+import hiperGiganteAmarela from '../assets/planets/hipergigante_amarela.png';
 import image404 from '../assets/planets/undefined.webp';
 
 import api from '../services/api';
