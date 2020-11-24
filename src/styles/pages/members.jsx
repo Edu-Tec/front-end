@@ -157,6 +157,7 @@ export const Container = styled.div`
         flex-direction: row;
         width: 100vw;
         height: fit-content;
+        padding: 10px;
       }
 
       .text {
