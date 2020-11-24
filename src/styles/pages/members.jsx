@@ -162,7 +162,7 @@ export const Container = styled.div`
 
       .text {
         overflow: auto !important;
-        margin-top: 0;
+        margin-top: 0px !important;
       }
 
       img {
