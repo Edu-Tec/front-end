@@ -68,7 +68,7 @@ export const Container = styled.div`
     }
   }
 
-  .normalMenu:hover {
+  nav:hover {
     background-color: ${(props) => {
       return props.dark ? 'rgba(255,255,255,.25)' : '#00000098';
     }};
