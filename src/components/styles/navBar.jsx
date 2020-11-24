@@ -53,7 +53,7 @@ export const Container = styled.div`
 
     @media screen and (min-width: 768px) {
       & .normalMenu {
-        margin-left: 35.9%;
+        margin-right: 0.9%;
       }
 
       .menu {
