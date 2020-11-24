@@ -3,7 +3,6 @@ import styled, { keyframes } from 'styled-components';
 const colors = {
   igo: '#0000ff',
   isa: '#ffffff',
-  isaBlack: '#000000',
   laura: '#800080',
   vitor: '#ff0000',
 };
@@ -47,8 +46,9 @@ export const Container = styled.div`
     .laura,
     .vitor {
       width: 25%;
-      height: fit-content;
-      padding: 10px;
+      height: 100vh;
+      margin-top: 50px;
+      padding: 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -118,7 +118,7 @@ export const Container = styled.div`
         background-color: ${colors.isa}30;
       }
       p:nth-of-type(6) {
-        color: ${colors.isaBlack};
+        color: ${colors.isa};
         font-size: 26px;
         justify-self: center;
       }
@@ -156,10 +156,12 @@ export const Container = styled.div`
         overflow: hidden;
         flex-direction: row;
         width: 100vw;
+        height: fit-content;
       }
 
       .text {
         overflow: auto !important;
+        margin-top: 0;
       }
 
       img {
