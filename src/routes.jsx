@@ -17,7 +17,7 @@ const Routes = () => {
         <Route path="/about" component={About} />
         <Route path="/astro/:id" component={Astro} />
         <Route
-          component={({ location }) => {
+          render={({ location }) => {
             switch (location.pathname) {
               case '/members':
                 return <Members />;
