@@ -16,6 +16,18 @@ const Routes = () => {
         <Route path="/members" component={Members} />
         <Route path="/about" component={About} />
         <Route path="/astro/:id" component={Astro} />
+        <Route
+          component={({ location }) => {
+            switch (location.pathname) {
+              case '/members':
+                return <Members />;
+              case '/about':
+                return <About />;
+              default:
+                return <Map />;
+            }
+          }}
+        />
       </Switch>
     </BrowserRouter>
   );
